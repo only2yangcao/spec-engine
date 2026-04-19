@@ -142,6 +142,17 @@ your-project/
     └── ...
 ```
 
+重要步骤：设置output-style
+> 这一步可以避免非常多主agent失控的问题
+
+步骤
+```
+1.  Claude code cli启动后，输入/config  
+2.  选择Output style，按空格
+3.  选择spec-executor-style，保存
+4.  重启Claude code cli
+5.  输入 "你好"
+
 ## 版本管理目录结构
 
 框架会在项目根目录下创建 `.spec-versions/` 目录用于多版本管理：
