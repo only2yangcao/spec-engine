@@ -152,6 +152,7 @@ your-project/
 3.  选择spec-executor-style，保存
 4.  重启Claude code cli
 5.  输入 "你好"
+```
 
 ## 版本管理目录结构
 
