@@ -1,0 +1,16 @@
+{
+"hooks": {
+    "PostCompact": [
+      {
+        "matcher": "auto|manual",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "学习.calude/CLAUDE.md文件，严格按照流程推进项目进展",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}
