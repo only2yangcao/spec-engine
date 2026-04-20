@@ -121,7 +121,7 @@ Step8: [项目汇报]
 
 ## 安装使用
 
-将本项目直接安装到目标工程的 `.claude` 目录下（**不要**创建 spec-engine 层）：
+1. 将本项目直接安装到目标工程的 `.claude` 目录下（**不要**创建 spec-engine 层）：
 
 ```bash
 # 在目标工程根目录下
@@ -142,7 +142,9 @@ your-project/
     └── ...
 ```
 
-重要步骤：设置output-style
+2. 将prompts目录下的CLAUDE.md复制一份到.claude目录，这样claude code启动时会自动加载
+
+3. 重要步骤：设置output-style
 > 这一步可以避免非常多主agent失控的问题
 
 步骤
