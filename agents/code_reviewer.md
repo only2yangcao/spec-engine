@@ -97,7 +97,7 @@ color: red
 
 ## 审查报告
 
-请按以下结构化格式输出审查结果，每个任务单独一个文件，写入到`.spec-versions/{版本号}/reviews/review-task-{任务编号}.md`
+请按以下结构化格式输出审查结果，每个任务单独一个文件，写入到`.spec-versions/{版本号}/reviews/review-task-{任务编号}.md`，如果文件已存在，append
 
 ```
 ### 📊 总评
