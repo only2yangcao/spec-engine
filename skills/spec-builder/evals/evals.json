@@ -1,0 +1,153 @@
+{
+  "skill_name": "spec-builder",
+  "evals": [
+    {
+      "id": 1,
+      "name": "fuzzy-input-path-b",
+      "prompt": "我最近总觉得自己读的技术文章太多了，但都记不住。感觉可以做个什么东西帮忙... 但不知道具体做什么。",
+      "expected_output": "应该从 Step 1 (Voice Dump) 开始，走路径 B（渐进式追问），因为信号维度 ≤2（只有模糊痛点，无产品形态/目标用户/核心功能/技术约束）。第一个问题应是锚定场景类型，不应直接跳到写 SPEC。展示进度图。",
+      "files": [],
+      "expectations": [
+        "输出中提到 Step 1 或意图倾倒阶段",
+        "走路径 B（渐进式追问），而非路径 A（直接提取意图清单）",
+        "展示了进度图（包含步骤状态标记）",
+        "第一个问题聚焦于锚定场景或追问需求细节，而非直接生成 SPEC",
+        "没有生成任何实现代码",
+        "没有直接跳到 Step 3a 或更后的步骤"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "clear-input-path-a",
+      "prompt": "我想做一个开源的 CLI 工具，把 Hacker News 上的热门帖子按主题分类后每天推送到 Telegram。技术栈用 Python，部署到我自己的服务器。帮我走一下你的开发流程，市场验证我就跳过了。",
+      "expected_output": "应该确认跳过 Step 0（标记为 skipped），走路径 A（信号 ≥3：产品形态=CLI、核心功能=分类+推送、技术约束=Python+自部署），直接提取意图清单请用户确认，不需要渐进式追问。进度图中 Step 0 标记为跳过。",
+      "files": [],
+      "expectations": [
+        "Step 0 被标记为跳过（skipped）",
+        "走路径 A（直接提取意图清单），而非路径 B",
+        "提取了意图清单，包含产品形态、核心功能、技术约束等维度",
+        "展示了进度图",
+        "没有生成任何实现代码",
+        "请用户确认意图清单后再继续"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "direct-step-entry",
+      "prompt": "跳到 Step 4b。我已经有 SPEC 和 DESIGN 了——我要做一个 URL shortener，功能很简单：短链生成、跳转、点击统计。技术栈 Go + SQLite + Cloudflare Workers。帮我生成测试场景和 CONTRACT。",
+      "expected_output": "应该直接进入 Step 4b，根据用户描述生成 Given-When-Then 测试场景（覆盖正常路径+异常路径）和 CONTRACT.md。进度图中 Step 0-4a 标记为跳过。不应要求用户先走前面的步骤。",
+      "files": [],
+      "expectations": [
+        "直接进入 Step 4b，不要求用户先走前面步骤",
+        "生成了 Given-When-Then 格式的测试场景",
+        "测试场景覆盖正常路径和异常路径",
+        "生成了 CONTRACT.md 内容",
+        "进度图中前面的步骤标记为跳过",
+        "没有生成任何实现代码"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "internal-tool-skip-step0",
+      "prompt": "帮我想清楚一个内部工具，给我们数仓团队用的 SQL 审核平台。",
+      "expected_output": "Step 0 应自动跳过（内部工具不需要市场验证），直接进入 Step 1。走路径 A 或 B 取决于信号判断（产品形态=平台、目标用户=数仓团队、核心功能=SQL审核 → 信号≥3，走路径A）。提取意图清单时应追问：审核的是什么类型的 SQL？审核规则有哪些？谁触发审核？",
+      "files": [],
+      "expectations": [
+        "Step 0 被自动跳过（内部工具不需要市场验证）",
+        "进入 Step 1 意图倾倒",
+        "信号判断合理（≥3 个信号维度：产品形态、目标用户、核心功能）",
+        "提取了意图清单或进行了有针对性的追问",
+        "展示了进度图",
+        "没有生成任何实现代码"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "breakpoint-resume",
+      "prompt": "我之前用 spec-builder 做了一半，停在 Step 3a 了。继续。",
+      "expected_output": "应该先检查 userdata 下的 spec-builder-progress.json。如果找到未完成项目，展示摘要（项目名、停在哪一步、已完成的 artifact），确认后从断点继续。如果没找到进度文件，告知用户没有检测到未完成项目，询问是否要重新开始。",
+      "files": [],
+      "expectations": [
+        "尝试检查 userdata 下的 spec-builder-progress.json",
+        "如果找到进度文件，展示项目摘要",
+        "如果没找到进度文件，告知用户并询问是否重新开始",
+        "不假设有进度文件存在就直接开始某个步骤",
+        "没有生成任何实现代码"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "roundtable-trigger",
+      "prompt": "我在做一个个人记账 App，SPEC 初稿已经出来了，我觉得有些地方可能有盲区。帮我做一下圆桌审查。",
+      "expected_output": "应该进入 Step 3b 圆桌审查。选取 3-5 位审查角色（至少包含：目标用户代表、技术魔鬼代言人），聚焦 SPEC 盲区。审查者应以【角色名】【行动标签】格式发言。审查后输出修改建议清单，请用户逐条决策。不应直接启动 /ljg-roundtable。",
+      "files": [],
+      "expectations": [
+        "进入 Step 3b 圆桌审查",
+        "选取了多个审查角色（至少 3 位）",
+        "角色中包含目标用户代表或类似角色",
+        "角色中包含技术魔鬼代言人或类似挑战者角色",
+        "使用了结构化的发言格式（角色名+行动标签）",
+        "没有直接调用 /ljg-roundtable 技能",
+        "没有生成任何实现代码"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "code-generation-rejection",
+      "prompt": "帮我写个微信小程序吧，扫码点餐的那种。",
+      "expected_output": "不应直接开始写代码（spec-builder 不是代码生成器）。应该引导进入 Step 1 意图倾倒，走路径 B（信号≤2：产品形态=小程序、核心功能=扫码点餐，但缺少目标用户、技术约束、动作意图不明确）。第一步应追问场景和具体需求。",
+      "files": [],
+      "expectations": [
+        "没有生成任何微信小程序代码",
+        "引导进入 Step 1 意图倾倒",
+        "进行了追问或需求探索，而非直接开始写代码",
+        "展示了进度图",
+        "明确了 spec-builder 的定位是规格构建而非代码生成"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "progress-save",
+      "prompt": "暂停，我明天再继续。",
+      "expected_output": "应该保存当前进度到 userdata/spec-builder-progress.json（包含项目名、当前步骤、已完成 artifact、关键决策）。告知用户进度已保存，下次启动 spec-builder 时会自动检测到未完成项目。",
+      "files": [],
+      "expectations": [
+        "尝试保存进度到 spec-builder-progress.json",
+        "告知用户进度已保存或会被保存",
+        "提到下次可以继续或恢复",
+        "没有生成任何实现代码",
+        "没有忽略用户的暂停请求继续推进流程"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "market-hypothesis",
+      "prompt": "我想做一个 AI 写作助手，能自动帮我润色英文邮件。目标用户是英语非母语的职场人。技术栈不确定，你帮我选。核心功能就是粘贴邮件草稿，一键润色，给出修改建议。部署到 Vercel。我想先做市场假设声明。",
+      "expected_output": "应该进入 Step 0 市场假设声明。AI 引导用户产出结构化的假设文档（目标用户/痛点/现有方案/核心假设/差异化）。不应生成 landing page 代码。完成后展示进度图，Step 0 标记完成，提示继续到 Step 1。",
+      "files": [],
+      "expectations": [
+        "进入 Step 0 市场假设声明",
+        "引导产出结构化的假设文档",
+        "假设文档包含目标用户、痛点、核心假设等维度",
+        "没有生成 landing page 代码",
+        "展示了进度图",
+        "没有跳过 Step 0 直接进入后续步骤"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "direct-design-entry",
+      "prompt": "我已经有完整的 SPEC v1.0 了，直接帮我做技术设计。这是一个博客系统，用 Next.js + PostgreSQL，支持 Markdown 编辑、标签分类、评论功能。",
+      "expected_output": "应该直接进入 Step 3c。使用 Scaffold+Annotate 模式生成 DESIGN.md v0.1，覆盖五个域（数据模型/枚举/API/业务规则/外部依赖）。每个需要决策的位置用三色标注（✅/🟡/🔴）。生成后报告标注统计，询问用户先处理哪类标注。",
+      "files": [],
+      "expectations": [
+        "直接进入 Step 3c 技术设计，不要求用户先走前面步骤",
+        "使用 Scaffold+Annotate 模式生成 DESIGN.md",
+        "DESIGN 覆盖数据模型、API、业务规则等多个域",
+        "使用了三色标注系统（✅/🟡/🔴）",
+        "报告了标注统计",
+        "没有生成任何实现代码"
+      ]
+    }
+  ]
+}
