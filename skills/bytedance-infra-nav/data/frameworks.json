@@ -1,0 +1,307 @@
+{
+  "meta": {
+    "version": "1.1.0",
+    "last_updated": "2026-04-22",
+    "description": "字节内部基础设施框架导航数据库"
+  },
+  "categories": [
+    {"id": "storage", "name": "存储类", "icon": "💾", "description": "KV存储、缓存、图数据库等存储基础设施"},
+    {"id": "mq", "name": "消息队列类", "icon": "📨", "description": "消息中间件与数据同步管道"},
+    {"id": "microservice", "name": "微服务框架类", "icon": "🔧", "description": "RPC/HTTP 框架与微服务工具集"},
+    {"id": "deploy", "name": "容器与部署类", "icon": "🚀", "description": "容器平台、发布系统、监控体系"},
+    {"id": "governance", "name": "服务治理类", "icon": "🛡️", "description": "分布式事务、服务网格、服务发现"},
+    {"id": "data", "name": "数据平台类", "icon": "📊", "description": "大数据计算、实时计算、数据仓库"}
+  ],
+  "frameworks": [
+    {
+      "name": "Abase",
+      "aliases": ["abase", "abase2", "Abase2"],
+      "category": "storage",
+      "description": "字节自研高性能、大容量、高可用 KV 存储系统，支撑 90% 以上的 KV 存储场景",
+      "links": [
+        {"title": "📖 平台入口", "url": "https://cloud.bytedance.net/abase/abase2"},
+        {"title": "🚀 快速入门", "url": "https://cloud.bytedance.net/docs/abase/docs/63d768447df7d2021dfbf062/63d79424bd6ec60224796d07"},
+        {"title": "🔧 Go SDK", "url": "https://cloud.bytedance.net/docs/abase/docs/63d768447df7d2021dfbf062/63d8de"},
+        {"title": "📋 用户文档", "url": "https://doc.bytedance.net/docs/1019/1256/15424/"},
+        {"title": "📖 飞书文档", "url": "https://bytedance.larkoffice.com/wiki/EXLHw0g2Fitn6MkmhjacvNETnwd"}
+      ],
+      "tags": ["KV", "NoSQL", "存储", "缓存", "Redis协议"]
+    },
+    {
+      "name": "ByteKV",
+      "aliases": ["bytekv", "byte-kv"],
+      "category": "storage",
+      "description": "字节自研强一致在线 KV & 表格存储，基于 Raft 实现多副本一致性，支持分布式事务",
+      "links": [
+        {"title": "📖 字节云文档", "url": "https://cloud.bytedance.net/docs/bytekv"},
+        {"title": "📖 产品简介", "url": "TODO"}
+      ],
+      "tags": ["KV", "强一致", "Raft", "事务", "表格存储"]
+    },
+    {
+      "name": "Redis",
+      "aliases": ["redis", "缓存", "cache"],
+      "category": "storage",
+      "description": "基于 Redis 协议的分布式缓存服务（内部托管版本）",
+      "links": [
+        {"title": "📖 用户文档(新版)", "url": "https://bytedance.feishu.cn/docs/doccnumdsXubF47CrmZm3BHsQwf"},
+        {"title": "📖 字节云文档", "url": "https://doc.bytedance.net/docs/2707/3269/35203/"},
+        {"title": "🚀 平台入口", "url": "https://cloud.bytedance.net/cache"}
+      ],
+      "tags": ["缓存", "KV", "Redis", "内存"]
+    },
+    {
+      "name": "ByteGraph",
+      "aliases": ["bytegraph", "byte-graph", "图数据库"],
+      "category": "storage",
+      "description": "字节自研分布式图数据库，支持社交关系、推荐等图计算场景",
+      "links": [
+        {"title": "📖 平台入口", "url": "https://cloud.bytedance.net/bytegraph/cluster"},
+        {"title": "📖 用户文档", "url": "https://bytedance.larkoffice.com/docx/SSxudpF28oBd8dxMR5zcGcNZnNd"},
+        {"title": "📖 飞书Wiki", "url": "https://bytedance.larkoffice.com/wiki/wikcniyTzAzeTnqjL218DGoyqzf"}
+      ],
+      "tags": ["图数据库", "Graph", "社交", "推荐"]
+    },
+    {
+      "name": "MySQL / RDS",
+      "aliases": ["mysql", "RDS", "rds", "关系型数据库"],
+      "category": "storage",
+      "description": "内部托管 MySQL 关系型数据库服务（底层为 ByteNDB）",
+      "links": [
+        {"title": "📖 平台入口", "url": "https://cloud.bytedance.net/rds/profile"},
+        {"title": "📖 产品简介", "url": "https://bytedance.larkoffice.com/wiki/wikcni1Q4JoAxaC4OtK9zIF07qd"},
+        {"title": "📖 字节云文档", "url": "https://cloud.bytedance.net/docs/rds/docs/63d785f16773b302378ba408/63d78a366773b302378bb23d"}
+      ],
+      "tags": ["关系型", "SQL", "RDBMS", "RDS"]
+    },
+    {
+      "name": "ByteNDB",
+      "aliases": ["bytendb", "byte-ndb", "NDB", "分布式数据库"],
+      "category": "storage",
+      "description": "字节自研云原生分布式 OLTP 数据库，100% 兼容 MySQL 协议，线上 10 万+ 实例",
+      "links": [
+        {"title": "📖 产品简介", "url": "https://bytedance.larkoffice.com/wiki/wikcnhTvslQObBGJhaaqR62pBEf"},
+        {"title": "📖 字节云文档", "url": "https://cloud.bytedance.net/docs/rds/docs/63d785f16773b302378ba408/63d78a366773b302378bb23d"}
+      ],
+      "tags": ["分布式数据库", "NewSQL", "MySQL兼容", "OLTP"]
+    },
+    {
+      "name": "BMQ",
+      "aliases": ["bmq", "ByteMQ", "bytemq", "ByteDance Message Queue"],
+      "category": "mq",
+      "description": "字节自研云原生消息队列，存算分离架构，兼容 Kafka 协议，主打高吞吐离线场景",
+      "links": [
+        {"title": "📖 用户接入文档", "url": "https://doc.bytedance.net/docs/1019/1256/15424/"},
+        {"title": "📖 字节云文档", "url": "https://cloud.bytedance.net/docs/product/message-queue"},
+        {"title": "📖 公开文档", "url": "https://cloud.bytedance.net/docs/product/message-queue?x-resource-account=public&x-bc-region-id=bytedance"},
+        {"title": "📋 Go SDK 使用指南", "url": "https://bytedance.larkoffice.com/docx/TRHCdsvqmorSdqxuMfGc8HjDn39"},
+        {"title": "📋 MQ 使用最佳实践", "url": "https://bytedance.larkoffice.com/wiki/wikcn88vzK3QZJ81WCy7p8gCOPe"}
+      ],
+      "tags": ["消息队列", "MQ", "Kafka兼容", "云原生", "离线", "流计算"]
+    },
+    {
+      "name": "RocketMQ",
+      "aliases": ["rocketmq", "rocket-mq", "RMQ", "rmq"],
+      "category": "mq",
+      "description": "面向在线业务场景的低延迟、高可用消息队列（推荐在线场景使用）",
+      "links": [
+        {"title": "📖 产品介绍", "url": "https://bytedance.larkoffice.com/wiki/wikcn2jxP7kjYCSlJM1ZLTbRS0e"},
+        {"title": "📖 用户接入文档", "url": "https://doc.bytedance.net/docs/1019/1257/35362/"},
+        {"title": "📖 字节云文档", "url": "https://cloud.bytedance.net/docs/product/rocketmq?x-resource-account=public"},
+        {"title": "🚀 快速入门", "url": "https://cloud.bytedance.net/docs/rocketmq/docs/646f4e4111c9bb02200052ba/658e2b007c178a02ff838edc?x-resource-account=public&x-bc-region-id=bytedance"},
+        {"title": "📋 接入快速上手教程", "url": "https://bytedance.larkoffice.com/docx/DbY8dOdHRokvzOxka9qcf1e3nwg"}
+      ],
+      "tags": ["消息队列", "MQ", "在线", "事务消息", "延迟消息"]
+    },
+    {
+      "name": "Kafka",
+      "aliases": ["kafka", "apache-kafka"],
+      "category": "mq",
+      "description": "内部托管 Apache Kafka 集群（新业务推荐使用 BMQ，Kafka 逐步收敛）",
+      "links": [
+        {"title": "📖 字节云文档", "url": "https://cloud.bytedance.net/docs/product/message-queue"},
+        {"title": "📋 MQ 选型指南", "url": "https://bytedance.larkoffice.com/wiki/wikcnCfBeU07MJkZyYxK3QLcqpc"}
+      ],
+      "tags": ["消息队列", "MQ", "流计算", "大数据", "即将收敛"]
+    },
+    {
+      "name": "Databus / DBus",
+      "aliases": ["databus", "data-bus", "dbus", "数据同步", "dsyncer", "ByteDTS"],
+      "category": "mq",
+      "description": "字节内部数据同步中间件，监听 MySQL binlog 变更，支持全量/增量同步到 MQ/ES 等下游",
+      "links": [
+        {"title": "📖 ByteDTS 字节云文档", "url": "https://cloud.bytedance.net/docs/bytedts/docs/64f7292bba4ec702b93ae3b7/6537ae4119a01002e54891d5"},
+        {"title": "📖 DBus 使用说明", "url": "https://bytedance.larkoffice.com/wiki/XSJhwazVpiP6kLkGdAMcqtzMnKh"},
+        {"title": "📖 ByteDTS 自助手册", "url": "https://bytedance.larkoffice.com/wiki/MPnhw1RiuiuTWSkKyTjcwkQkn6d"},
+        {"title": "📖 Dsyncer 平台", "url": "https://cloud.bytedance.net/dsyncer/tasks/favor"}
+      ],
+      "tags": ["数据同步", "CDC", "binlog", "变更订阅", "管道", "DTS"]
+    },
+    {
+      "name": "Kitex",
+      "aliases": ["kitex", "KiteX", "kitex-rpc"],
+      "category": "microservice",
+      "description": "字节自研高性能 Go RPC 框架，已开源至 CloudWeGo，支持 Thrift/Protobuf",
+      "links": [
+        {"title": "📖 内部文档", "url": "https://bytedance.feishu.cn/wiki/wikcnhtTKPOKtKbcwPsQ4YFftbg"},
+        {"title": "📖 字节云文档中心", "url": "https://cloud.bytedance.net/developer/docs#network"},
+        {"title": "🌐 开源文档", "url": "https://www.cloudwego.io/zh/docs/kitex/"}
+      ],
+      "tags": ["RPC", "Go", "Thrift", "Protobuf", "微服务"]
+    },
+    {
+      "name": "Hertz",
+      "aliases": ["hertz", "hertz-http"],
+      "category": "microservice",
+      "description": "字节自研高性能 Go HTTP 框架，已开源至 CloudWeGo",
+      "links": [
+        {"title": "📖 快速入门", "url": "https://bytedance.feishu.cn/wiki/wikcnPQsPIJtAuyy6zOG2fWB6YZ"},
+        {"title": "📖 内部文档", "url": "https://bytedance.feishu.cn/wiki/wikcn5G6W2cX7vtj5uSQHrtDGHf"},
+        {"title": "🌐 开源文档", "url": "https://www.cloudwego.io/zh/docs/hertz/"}
+      ],
+      "tags": ["HTTP", "Go", "Web", "API", "微服务"]
+    },
+    {
+      "name": "CloudWeGo",
+      "aliases": ["cloudwego", "cloud-we-go"],
+      "category": "microservice",
+      "description": "字节开源的微服务框架集合，包含 Kitex、Hertz、Volo 等项目",
+      "links": [
+        {"title": "🌐 官网", "url": "https://www.cloudwego.io/zh/"},
+        {"title": "🌐 GitHub", "url": "https://github.com/cloudwego"}
+      ],
+      "tags": ["开源", "微服务", "Go", "Rust", "框架集"]
+    },
+    {
+      "name": "TCE",
+      "aliases": ["tce", "容器引擎", "容器平台", "TCE Platform"],
+      "category": "deploy",
+      "description": "字节内部容器引擎平台（基于 K8s），提供服务生命周期管理、弹性扩缩、混部调度",
+      "links": [
+        {"title": "📖 平台入口", "url": "https://cloud.bytedance.net/tce"},
+        {"title": "📖 字节云文档中心", "url": "https://cloud.bytedance.net/developer/docs"}
+      ],
+      "tags": ["容器", "K8s", "部署", "编排", "混部"]
+    },
+    {
+      "name": "SCM",
+      "aliases": ["scm", "发布系统", "发布平台"],
+      "category": "deploy",
+      "description": "字节内部发布系统，管理服务的构建、灰度、上线、回滚流程",
+      "links": [
+        {"title": "📖 平台入口", "url": "https://cloud.bytedance.net/scm"}
+      ],
+      "tags": ["发布", "CI/CD", "灰度", "回滚"]
+    },
+    {
+      "name": "Argos",
+      "aliases": ["argos", "监控平台"],
+      "category": "deploy",
+      "description": "字节内部统一监控平台，提供指标采集、告警、可视化大盘",
+      "links": [
+        {"title": "📖 平台入口", "url": "https://cloud.bytedance.net/argos"}
+      ],
+      "tags": ["监控", "告警", "大盘", "可视化"]
+    },
+    {
+      "name": "Metrics",
+      "aliases": ["metrics", "监控指标", "打点"],
+      "category": "deploy",
+      "description": "字节内部监控指标体系，提供业务指标上报、聚合、查询能力",
+      "links": [
+        {"title": "📖 字节云文档", "url": "https://cloud.bytedance.net/developer/docs#monitoring"},
+        {"title": "📖 Grafana", "url": "https://grafana.byted.org"}
+      ],
+      "tags": ["监控", "指标", "打点", "聚合", "Grafana"]
+    },
+    {
+      "name": "TCC / ByteTX",
+      "aliases": ["tcc", "分布式事务", "TCC事务", "ByteTX", "bytetx", "ByteSaga"],
+      "category": "governance",
+      "description": "字节自研分布式事务框架（ByteTX），支持 AT 模式和 TCC 模式，保障跨服务数据一致性",
+      "links": [
+        {"title": "📖 ByteTX 简述", "url": "https://bytedance.feishu.cn/docs/doccnWsez7fZCezBzEKDqP1xgpf"},
+        {"title": "📖 AT 模式详解", "url": "https://bytedance.feishu.cn/wiki/wikcn6cARKWCTGUOBLkVAMpmWVf"},
+        {"title": "📖 AT 模式接入文档(Go)", "url": "https://bytedance.larkoffice.com/wiki/TFVNwXQmIisOrnkKym6c7y2QnMe"},
+        {"title": "📋 TCC 常见问题导航", "url": "https://bytedance.feishu.cn/docx/doxcniV2fAAxrad8w2jALlOjoPB"},
+        {"title": "📋 最佳实践手册", "url": "https://bytedance.larkoffice.com/wiki/VKnqwI5pNi8tSMkKNzIcglbEnmd"},
+        {"title": "📋 使用体验", "url": "https://bytedance.feishu.cn/wiki/wikcn3qaxMUOEV5HrS78lKf81Id"}
+      ],
+      "tags": ["分布式事务", "TCC", "AT", "一致性", "ByteTX"]
+    },
+    {
+      "name": "Service Mesh / ByteMesh",
+      "aliases": ["service-mesh", "服务网格", "mesh", "sidecar", "ByteMesh", "bytemesh"],
+      "category": "governance",
+      "description": "字节内部服务网格（ByteMesh），基于 Sidecar 模式实现统一流量管理、可观测性、安全策略",
+      "links": [
+        {"title": "📖 ByteMesh 接入指南", "url": "https://cloud.bytedance.net/docs/bytemesh/docs/664dd6752cdc2b030d5f7b20/66740999b8c0b102f42a7825?x-resource-account=public"},
+        {"title": "📖 飞书接入文档", "url": "https://bytedance.feishu.cn/wiki/wikcnHTtjU2MmZM9Vf4zMfs8opc"},
+        {"title": "📖 服务治理（第一版）", "url": "https://bytedance.feishu.cn/wiki/wikcnMHOh0DFxLNhKk07cZlmpEd"},
+        {"title": "📖 稳定性篇", "url": "https://cloud.bytedance.net/docs/bytemesh/docs/664dd6752cdc2b030d5f7b20/66dab29dcf84af030f071318?x-resource-account=public"},
+        {"title": "📋 文档索引", "url": "https://bytedance.feishu.cn/docs/doccnhzIfRMhUfs04mqm6ajinuh"}
+      ],
+      "tags": ["服务网格", "Sidecar", "流量管理", "可观测", "ByteMesh"]
+    },
+    {
+      "name": "Consul",
+      "aliases": ["consul", "服务发现", "注册中心"],
+      "category": "governance",
+      "description": "基于 HashiCorp Consul 的内部服务发现与配置管理",
+      "links": [
+        {"title": "📖 字节云文档", "url": "https://cloud.bytedance.net/developer/docs#network"}
+      ],
+      "tags": ["服务发现", "配置管理", "注册中心"]
+    },
+    {
+      "name": "PSM",
+      "aliases": ["psm", "服务标识", "服务树"],
+      "category": "governance",
+      "description": "字节内部服务标识体系（Product.Service.Module），用于唯一标识微服务实例",
+      "links": [
+        {"title": "📖 字节云文档", "url": "https://cloud.bytedance.net/developer/docs"}
+      ],
+      "tags": ["服务标识", "PSM", "服务树", "命名"]
+    },
+    {
+      "name": "Spark",
+      "aliases": ["spark", "Apache Spark", "Spark SQL"],
+      "category": "data",
+      "description": "内部托管 Apache Spark 大数据计算平台",
+      "links": [
+        {"title": "📖 字节云文档", "url": "https://cloud.bytedance.net/developer/docs#bigdata"}
+      ],
+      "tags": ["大数据", "批计算", "SQL", "ETL"]
+    },
+    {
+      "name": "Flink",
+      "aliases": ["flink", "Apache Flink", "实时计算"],
+      "category": "data",
+      "description": "内部托管 Apache Flink 实时流计算平台",
+      "links": [
+        {"title": "📖 字节云文档", "url": "https://cloud.bytedance.net/developer/docs#bigdata"}
+      ],
+      "tags": ["实时计算", "流计算", "Stream", "大数据"]
+    },
+    {
+      "name": "Hive",
+      "aliases": ["hive", "Apache Hive", "数据仓库"],
+      "category": "data",
+      "description": "内部托管 Apache Hive 数据仓库，支持离线数据分析",
+      "links": [
+        {"title": "📖 字节云文档", "url": "https://cloud.bytedance.net/developer/docs#bigdata"}
+      ],
+      "tags": ["数据仓库", "离线分析", "SQL", "HDFS"]
+    },
+    {
+      "name": "LAS",
+      "aliases": ["las", "湖仓一体", "Lake Analysis Service"],
+      "category": "data",
+      "description": "字节内部湖仓一体分析服务，融合数据湖与数据仓库能力",
+      "links": [
+        {"title": "📖 字节云文档", "url": "https://cloud.bytedance.net/developer/docs#bigdata"}
+      ],
+      "tags": ["湖仓一体", "数据湖", "分析", "大数据"]
+    }
+  ]
+}
